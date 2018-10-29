@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxModelInfo xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<AppliedUpdates xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<Customization>Allow</Customization>
+	<Description>Functionality for throwing managed exceptions from X++ and creating custom exceptions specific to Dynamics 365 for Finance and Operations.</Description>
+	<DisplayName>Managed Exceptions</DisplayName>
+	<Id>895972038</Id>
+	<InternalsVisibleTo xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<Layer>8</Layer>
+	<Locked>false</Locked>
+	<ModelModule>ManagedExceptions</ModelModule>
+	<ModelReferences xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+		i:nil="true" />
+	<ModuleReferences xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+		<d2p1:string>ApplicationPlatform</d2p1:string>
+	</ModuleReferences>
+	<Name>ManagedExceptions</Name>
+	<Publisher>Martin Dráb</Publisher>
+	<VersionBuild>0</VersionBuild>
+	<VersionMajor>0</VersionMajor>
+	<VersionMinor>1</VersionMinor>
+	<VersionRevision>0</VersionRevision>
+</AxModelInfo>

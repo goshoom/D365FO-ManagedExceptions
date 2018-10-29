@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>Global_ManagedExceptions_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(classStr(Global))]
+final static class Global_ManagedExceptions_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>exception</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Throws the provided exception object.
+    /// </summary>
+    /// <param name = "_ex">The exception to be thrown.</param>
+    /// <returns></returns>
+    public static Exception exception(System.Exception _ex)
+    {
+        Goshoom.DynamicsAX.ExceptionHelper::ThrowException(_ex);
+        // The return statement is never called because an exception is thrown above,
+        // but it makes the method compatible with the throw statement.
+        return Exception::Error;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
