@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxModelInfo xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<AppliedUpdates xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<Customization>Allow</Customization>
+	<Description>Examples of throwing and catching managed exceptions.</Description>
+	<DisplayName>Managed Exceptions Examples</DisplayName>
+	<Id>895972053</Id>
+	<InternalsVisibleTo xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<Layer>8</Layer>
+	<Locked>false</Locked>
+	<ModelModule>ManagedExceptionsExamples</ModelModule>
+	<ModelReferences xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+		i:nil="true" />
+	<ModuleReferences xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+		<d2p1:string>ApplicationPlatform</d2p1:string>
+		<d2p1:string>ManagedExceptions</d2p1:string>
+	</ModuleReferences>
+	<Name>ManagedExceptionsExamples</Name>
+	<Publisher>Martin Dráb</Publisher>
+	<VersionBuild>0</VersionBuild>
+	<VersionMajor>0</VersionMajor>
+	<VersionMinor>1</VersionMinor>
+	<VersionRevision>0</VersionRevision>
+</AxModelInfo>

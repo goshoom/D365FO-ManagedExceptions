@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>TestThrow</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+using Goshoom.DynamicsAX;
+
+/// <summary>
+/// This class demonstrates how CRL exceptions can be thrown from X++
+/// and how they can be handled.
+/// </summary>
+class TestThrow
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args _args)
+    {
+        TestThrow t = new TestThrow();
+
+        //t.thrownClassicNetException();
+        //t.throwCustomException_Simple();
+        //t.throwCustomException_ExtraDetails();
+        //t.throwCustomException_ExtraDetails_Alt();
+        //t.throwCustomException_NonDefaultMessage();
+        t.throwAndCatchCustomException();
+        //t.throwAndCatchAsGenericError();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>thrownClassicNetException</Name>
+				<Source><![CDATA[
+    void thrownClassicNetException()
+    {
+        throw exception(new System.ArgumentNullException("_name"));
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>throwCustomException_Simple</Name>
+				<Source><![CDATA[
+    void throwCustomException_Simple()
+    {
+        throw exception(new FieldEmptyException(fieldStr(SysUserInfo, Email)));
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>throwCustomException_ExtraDetails</Name>
+				<Source><![CDATA[
+    void throwCustomException_ExtraDetails()
+    {
+        SysUserInfo user = this.findUser();
+
+        if (!user.Email)
+        {
+            throw exception(new FieldEmptyException(fieldStr(SysUserInfo, Email), user));
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>throwCustomException_ExtraDetails_Alt</Name>
+				<Source><![CDATA[
+    void throwCustomException_ExtraDetails_Alt()
+    {
+        SysUserInfo user = this.findUser();
+
+        if (!user.Email)
+        {
+            FieldEmptyException ex = new FieldEmptyException(fieldStr(SysUserInfo, Email), user);
+            throw exception(ex);
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>throwCustomException_NonDefaultMessage</Name>
+				<Source><![CDATA[
+    void throwCustomException_NonDefaultMessage()
+    {
+        throw exception(new FieldEmptyException("The 'Address' field must be filled otherwie the carrier wouldn't know where to deliver the goods.", true));
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>throwAndCatchCustomException</Name>
+				<Source><![CDATA[
+    void throwAndCatchCustomException()
+    {
+        FieldEmptyException fieldEmptyEx;
+        
+        try
+        {
+            this.throwCustomException_ExtraDetails();
+        }
+        catch (fieldEmptyEx)
+        {
+            if (fieldEmptyEx.Record)
+            {
+                setPrefix("We can log all these details:");
+                info(strFmt("Exception type: %1", fieldEmptyEx.GetType().Name));
+                info(strFmt("Message: %1", fieldEmptyEx.Message));
+                info(strFmt("Table: %1", tableId2Name(fieldEmptyEx.Record.TableId)));
+                info(strFmt("Field: %1", fieldEmptyEx.FieldName));
+
+                SysUserInfo user = fieldEmptyEx.Record as SysUserInfo;
+                if (user)
+                {
+                    info(strFmt("Data from the table: user ID %1, RecID %2", user.id, user.RecId));
+                }
+
+                info(strFmt("Stack trace: %1", fieldEmptyEx.StackTrace));
+            }
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>throwAndCatchAsGenericError</Name>
+				<Source><![CDATA[
+    void throwAndCatchAsGenericError()
+    {
+        try
+        {
+            this.throwCustomException_Simple();
+        }
+        catch (Exception::Error)
+        {
+            info("Handled!");
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>findUser</Name>
+				<Source><![CDATA[
+    // This method merely prepares demo data for other methods.
+    private SysUserInfo findUser()
+    {
+        SysUserInfo user;
+
+        select firstonly user;
+
+        user.Email = '';
+
+        return user;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
